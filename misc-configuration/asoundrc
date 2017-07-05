@@ -1,0 +1,14 @@
+pcm.hdmi_hw {
+  type hw
+  card 0     # <--- card number
+  device 3   # <--- device number
+}
+
+pcm.hdmi_complete {
+  type softvol
+  slave.pcm hdmi_hw 
+  control.name hdmi_volume
+  control.card 0
+}
+
+pcm.!default hdmi_complete 
