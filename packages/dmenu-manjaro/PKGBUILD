@@ -1,0 +1,51 @@
+# Maintainer: Bernhard Landauer <oberon@manjaro.org>
+# Contributor: Chrysostomus @forum.manjaro.org
+# Contributor: Sergej Pupykin <pupykin.s+arch@gmail.com>
+# Contributor: Bartłomiej Piotrowski <bpiotrowski@archlinux.org>
+# Contributor: Thorsten Töpper <atsutane-tu@freethoughts.de>
+# Contributor: Thayer Williams <thayer@archlinux.org>
+# Contributor: Jeff 'codemac' Mickey <jeff@archlinux.org>
+
+pkgname=dmenu-manjaro
+_pkgname=dmenu
+pkgver=4.6
+pkgrel=12
+pkgdesc="customized recency-aware dmenu for manjaro-i3 with xft- and mouse-support"
+arch=('i686' 'x86_64')
+groups=('i3-manjaro')
+license=('MIT')
+depends=('sh' 'libxinerama' 'libxft' 'noto-fonts')
+conflicts=('dmenu' 'dmenu-xft')
+provides=('dmenu' 'dmenu-xft')
+install=$pkgname.install
+source=(http://dl.suckless.org/tools/$_pkgname-$pkgver.tar.gz
+	dmenu-4.6-line-height-manjaro.diff
+	dmenu-4.6-xyw-manjaro.diff
+	dmenu-4.6-mouse-support-msel-manjaro.diff
+	dmenu_recency
+	dmenurc)
+md5sums=('6fedf081133bc0725cb040b3b8ac3fac'
+         '0e7946b11aba7e445fb0f97431a332da'
+         '90ace6ce00d5eca669cb6039583413fe'
+         '75ce132d2f30208b7cdef0d70339bae2'
+         'dbae2dd8b406d0635af7a7037ae81e79'
+         '328cae6ab0094d2c7efb5ea4d77e5597')
+
+prepare() {
+	cd $srcdir/$_pkgname-$pkgver
+	patch -p1 < ../dmenu-4.6-line-height-manjaro.diff
+	patch -p1 < ../dmenu-4.6-xyw-manjaro.diff
+	patch -p1 < ../dmenu-4.6-mouse-support-msel-manjaro.diff
+}
+build() {
+	cd $_pkgname-$pkgver
+	make X11INC=/usr/include/X11 X11LIB=/usr/lib/X11 FREETYPEINC=/usr/include/freetype2
+}
+
+package() {
+	cd $_pkgname-$pkgver
+	make PREFIX=/usr DESTDIR="$pkgdir" install
+	install -Dm755 "$srcdir/dmenu_recency" "$pkgdir/usr/bin/dmenu_recency"
+	install -Dm755 "$srcdir/dmenurc" "$pkgdir/usr/share/$_pkgname/dmenurc"
+	install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$_pkgname/LICENSE"
+}

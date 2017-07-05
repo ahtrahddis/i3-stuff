@@ -1,0 +1,8 @@
+post_install() {
+  pacman -Q dmenu-manjaro wmutils xdotool &> /dev/null \
+  && sed -i -e '/^menu_cmd=/s/=.*$/="dmenu -i -l MENU_LINES -x X_POSITION -y Y_POSITION -w MENU_WIDTH ${DMENU_OPTIONS} "/' -e '/^error_cmd=/s/=.*$/="dmenu -i -l 40 -x 500 -y 150 -w MENU_WIDTH -nb red -nf black -fn DejaVu"/' /usr/share/morc_menu/morc_menu_v1.conf
+  }
+
+post_upgrade() {
+  post_install
+  }
