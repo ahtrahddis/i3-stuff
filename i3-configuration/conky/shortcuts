@@ -18,6 +18,9 @@ conky.config = {
 	use_xft = true,
 }
 conky.text = [[
+${color}${font Bitstream Vera Sans:size=17:bold}i3wm cheatsheet$font
+
+
 ${color2}${font Bitstream Vera Sans:bold}Most Important Shortcuts$font
 
 ${color2}open new terminal window - ${color}mod+<Enter>
