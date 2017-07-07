@@ -24,7 +24,7 @@
 *color14:                 #34e2e2
 *color15:                 #eeeeec
 
-Xcursor.theme:                    Breeze
+Xcursor.theme: Adwaita
 Xcursor.size:                     0
 
 XTerm*background:                 #272827

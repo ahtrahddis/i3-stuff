@@ -38,22 +38,6 @@ bindsym $mod+d exec --no-startup-id dmenu_recency
 # launch categorized menu
 bindsym $mod+z exec --no-startup-id morc_menu
 
-################################################################################################
-## sound-section - DO NOT EDIT if you wish to automatically upgrade Alsa -> Pulseaudio later! ##
-################################################################################################
-
-exec --no-startup-id volumeicon
-bindsym $mod+Ctrl+m exec urxvt -e 'alsamixer'
-#exec --no-startup-id pulseaudio
-#exec --no-startup-id pa-applet
-#bindsym $mod+Ctrl+m exec pavucontrol
-
-################################################################################################
-
-# Screen brightness controls
-# bindsym XF86MonBrightnessUp exec "xbacklight -inc 10; notify-send 'brightness up'"
-# bindsym XF86MonBrightnessDown exec "xbacklight -dec 10; notify-send 'brightness down'"
-
 # Edit i3 config
 
 bindsym $mod+Shift+i exec --no-startup-id urxvt -e  ~/.i3/scripts/i3config
@@ -62,15 +46,16 @@ bindsym $mod+Shift+i exec --no-startup-id urxvt -e  ~/.i3/scripts/i3config
 
 bindsym $mod+F1 exec pcmanfm
 bindsym $mod+F2 exec google-chrome-stable 
-#bindsym $mod+F3 exec ranger
+bindsym $mod+F3 exec thunderbird
+bindsym $mod+F12 exec keepassxc
 #bindsym $mod+Shift+F3 exec gksu pcmanfm
 #bindsym $mod+F5 exec terminal -e 'mocp'
 #bindsym $mod+t exec --no-startup-id pkill compton
 #bindsym $mod+Ctrl+t exec --no-startup-id compton -b
 #bindsym $mod+Shift+d --release exec "killall dunst; exec notify-send 'restart dunst'"
-#bindsym Print exec --no-startup-id i3-scrot
-#bindsym $mod+Print --release exec --no-startup-id i3-scrot -w
-#bindsym $mod+Shift+Print --release exec --no-startup-id i3-scrot -s
+#bindsym $mod+Alt+Delete exec --no-startup-id i3-scrot
+bindsym $mod+Shift+Delete --release exec --no-startup-id i3-scrot -w
+bindsym $mod+Delete --release exec --no-startup-id i3-scrot -s
 #bindsym $mod+Ctrl+x --release exec --no-startup-id xkill
 
 # focus_follows_mouse no
@@ -143,15 +128,15 @@ bindsym $mod+Ctrl+Left workspace prev
 # Workspace names
 # to display names or symbols instead of plain workspace numbers you can use
 # something like: set $ws1 1:mail
-#                 set $ws2 2:
-set $ws1 1
-set $ws2 2
-set $ws3 3
+
+set $ws1 1:main
+set $ws2 2:terms
+set $ws3 3:mail
 set $ws4 4
 set $ws5 5
 set $ws6 6
 set $ws7 7
-set $ws8 8
+set $ws8 8:misc
 
 # switch to workspace
 bindsym $mod+1 workspace $ws1
@@ -185,41 +170,24 @@ bindsym $mod+Shift+8 move container to workspace $ws8; workspace $ws8
 
 # Open applications on specific workspaces
 assign [class="Viber"] $ws8
-#assign [class="whats-app-nativefier-7bbd2c"] $ws8
-# assign [class="Pcmanfm"] $ws3
-# assign [class="Skype"] $ws5
+
 
 # Open specific applications in floating mode
-for_window [class="Shutter"] floating enable
 for_window [class="Viber"] floating enable
-#for_window [class="whats-app-nativefier-7bbd2c"] floating enable
+for_window [class=keepassxc] floating enable
 for_window [title="alsamixer"] floating enable border pixel 1
-for_window [class="Calamares"] floating enable border normal
-for_window [class="Clipgrab"] floating enable
 for_window [title="File Transfer*"] floating enable
 for_window [class="Galculator"] floating enable border pixel 1
 for_window [class="GParted"] floating enable border normal
-for_window [title="i3_help"] floating enable sticky enable border normal
 for_window [class="Lightdm-gtk-greeter-settings"] floating enable
 for_window [class="Lxappearance"] floating enable sticky enable border normal
-for_window [class="Manjaro-hello"] floating enable
-for_window [class="Manjaro Settings Manager"] floating enable border normal
-for_window [title="MuseScore: Play Panel"] floating enable
 for_window [class="Nitrogen"] floating enable sticky enable border normal
-for_window [class="Oblogout"] fullscreen enable
-for_window [class="octopi"] floating enable
-for_window [title="About Pale Moon"] floating enable
-for_window [class="Pamac-manager"] floating enable
-for_window [class="Pavucontrol"] floating enable
 for_window [class="qt5ct"] floating enable sticky enable border normal
 for_window [class="Qtconfig-qt4"] floating enable sticky enable border normal
 for_window [class="Simple-scan"] floating enable border normal
 for_window [class="(?i)System-config-printer.py"] floating enable border normal
 for_window [class="Skype"] floating enable border normal
-for_window [class="Thus"] floating enable border normal
-for_window [class="Timeset-gui"] floating enable border normal
 for_window [class="(?i)virtualbox"] floating enable border normal
-for_window [class="Xfburn"] floating enable
 
 # switch to workspace with urgent window automatically
 for_window [urgent=latest] focus
@@ -266,13 +234,14 @@ exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
 exec --no-startup-id nitrogen --restore; sleep 1; compton -b
 exec --no-startup-id nm-applet
 exec --no-startup-id clipit
+exec --no-startup-id volumeicon
 exec --no-startup-id owncloud
-exec --no-startup-id shutter --min_at_startup
+#exec --no-startup-id shutter --min_at_startup
 exec --no-startup-id setxkbmap -layout us,el && setxkbmap -option 'grp:alt_shift_toggle'
 exec_always --no-startup-id sbxkb
 exec --no-startup-id ~/.i3/conky/runconky.sh
 exec --no-startup-id xautolock -time 10 -locker blurlock
-#exec --no-startup-id "i3-msg 'workspace 2; append_layout ~/.i3/workspace-2.json'" 
+
 
 # Color palette used for i3 
 # Variables are set based on the documentation:
@@ -308,7 +277,7 @@ bar {
 	height 26
 	workspace_buttons yes
 
-	colors {
+colors {
 #        background $transparent
 #        background $i3_background
 #        statusline $i3_text
@@ -319,7 +288,7 @@ bar {
         active_workspace    $i3_color1  $i3_color3  $i3_color5
         inactive_workspace  $i3_color2  $i3_color3  $i3_color6
         urgent_workspace    $i3_color1  $i3_color5  $i3_color1
-    }
+}
 
 
 
