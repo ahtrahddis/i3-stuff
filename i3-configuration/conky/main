@@ -9,7 +9,7 @@ conky.config = {
 	font = 'Bitstream Vera Sans:size=8',
 	draw_shades = false,
 	gap_x = 25,
-	gap_y = 13,
+	gap_y = 20,
 	minimum_width = 200,
 	no_buffers = true,
 	own_window = true,
