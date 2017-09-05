@@ -1,0 +1,5 @@
+rofi -show run -modi run -location 1 -width 100 \
+		 -lines 1 -line-margin 0 -line-padding 1 \
+		 -separator-style none -font "mono 10" -columns 9 -bw 0 \
+		 -disable-history \
+		 -hide-scrollbar \
