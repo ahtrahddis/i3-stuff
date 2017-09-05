@@ -33,7 +33,7 @@ bindsym $mod+Return exec urxvt
 bindsym $mod+Shift+q kill
 
 # start program launcher
-bindsym $mod+d exec --no-startup-id dmenu_recency
+bindsym $mod+d exec --no-startup-id ~/.i3/myrofi
 
 # launch categorized menu
 bindsym $mod+z exec --no-startup-id morc_menu
@@ -45,7 +45,7 @@ bindsym $mod+Shift+i exec --no-startup-id urxvt -e  ~/.i3/scripts/i3config
 # Start Applications
 
 bindsym $mod+F1 exec pcmanfm
-bindsym $mod+F2 exec google-chrome-stable 
+bindsym $mod+F2 exec google-chrome-stable --proxy-server="10.0.0.1:8118" 
 bindsym $mod+F3 exec thunderbird
 bindsym $mod+F12 exec keepassxc
 #bindsym $mod+Shift+F3 exec gksu pcmanfm

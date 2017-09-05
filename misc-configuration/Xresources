@@ -41,7 +41,7 @@ URxvt.font:                       9x15
 !! terminus names see end of file!
 
 URxvt.depth:                      32
-URxvt.background:                 [80]#000000
+URxvt.background:                 [90]#000000
 URxvt*scrollBar:                  false
 URxvt*mouseWheelScrollPage:       false
 URxvt*cursorBlink:                true
@@ -200,3 +200,13 @@ URxvt*iso14755:                    False
 ! -xos4-terminus-bold-r-normal--24-240-72-72-c-120-iso10646-1
 ! -xos4-terminus-bold-r-normal--28-280-72-72-c-140-iso10646-1
 ! -xos4-terminus-bold-r-normal--32-320-72-72-c-160-iso10646-1
+
+! ------------------------------------------------------------------------------
+! ROFI Color theme
+! ------------------------------------------------------------------------------
+rofi.color-enabled: true
+rofi.color-window: argb:ee2b2c2b, #ff6600, #000000
+rofi.color-normal: argb:02b2c2b, #d8dee9, argb:02b2c2b, #ff6600, #eee8d5
+rofi.color-active: argb:0000000, #6699cc, argb:0000000, #6699cc, #fdf6e3
+rofi.color-urgent: argb:0000000, #f99157, argb:0000000, #f99157, #fdf6e3
+
