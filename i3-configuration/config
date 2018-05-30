@@ -21,7 +21,7 @@ bindsym $mod+n border normal
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
-font xft:Noto Sans 10
+font xft:Noto Sans 11
 
 # Use Mouse+$mod to drag floating windows
 floating_modifier $mod
@@ -45,7 +45,7 @@ bindsym $mod+Shift+i exec --no-startup-id urxvt -e  ~/.i3/scripts/i3config
 # Start Applications
 
 bindsym $mod+F1 exec pcmanfm
-bindsym $mod+F2 exec google-chrome-stable --proxy-server="10.0.0.1:8118" 
+bindsym $mod+F2 exec firefox
 bindsym $mod+F3 exec thunderbird
 bindsym $mod+F12 exec keepassxc
 #bindsym $mod+Shift+F3 exec gksu pcmanfm
@@ -175,7 +175,7 @@ bindsym $mod+Shift+8 move container to workspace $ws8; workspace $ws8
 # Open specific applications in floating mode
 for_window [class="Gthumb"] floating enable
 for_window [class="Electrum"] floating enable
-for_window [class="Viber"] floating enable move scratchpad
+#for_window [class="Viber"] floating enable move scratchpad
 for_window [class=keepassxc] floating enable
 for_window [title="alsamixer"] floating enable border pixel 1
 for_window [title="File Transfer*"] floating enable
@@ -250,6 +250,7 @@ exec --no-startup-id numlockx
 exec_always --no-startup-id sbxkb
 exec --no-startup-id ~/.i3/conky/runconky.sh
 exec --no-startup-id xautolock -time 10 -locker blurlock
+exec --no-startup-id ~/ICC/profile_apply
 #exec --no-startup-id xiccd
 
 # Color palette used for i3 
@@ -282,7 +283,7 @@ set $i3_color17         #0c0c0c
 # Start i3bar to display a workspace bar (plus the system information i3status if available)
 bar {
 	status_command i3blocks -c ~/.i3/i3blocks.conf
-	position bottom
+	position top
 	height 26
 	workspace_buttons yes
 
@@ -323,7 +324,7 @@ bindsym $mod+0 mode "$mode_system"
 set $mode_system System (l) lock, (e) logout, (s) suspend, (h) hibernate, (r) reboot, (Shift+s) shutdown
 
 mode "$mode_system" {
-    bindsym l exec --no-startup-id ~/.i3//scripts/i3exit.sh lock, mode "default"
+    bindsym l exec --no-startup-id ~/.i3/scripts/i3exit.sh lock, mode "default"
     bindsym e exec --no-startup-id ~/.i3/scripts/i3exit.sh logout, mode "default"
     bindsym s exec --no-startup-id ~/.i3/scripts/i3exit.sh suspend, mode "default"
     bindsym h exec --no-startup-id ~/.i3/scripts/i3exit.sh hibernate, mode "default"
