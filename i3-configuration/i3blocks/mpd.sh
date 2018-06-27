@@ -6,9 +6,9 @@ S_NCMP=$(mpc | head -1 | head -c 70)
 
 if [ "$NCMP" = "[playing]" ];then 
     if [ "$NUM_NCMP" -lt 70 ];then 
-        echo -e " :$(mpc current) "
+        echo -e " $(mpc current) "
     else
-        echo -e " : $S_NCMP..."
+        echo -e "   $S_NCMP..."
     fi
 #else
 #    echo -e " :Pause "

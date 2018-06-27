@@ -1,3 +1,3 @@
 #!/bin/bash 
 
-echo -e " $(date +%d\/%m\/%y\ %R) "
+echo -e " $(date +%y\/%m\/%d\ %R) "
