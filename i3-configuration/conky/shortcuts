@@ -25,10 +25,10 @@ ${color2}${font Bitstream Vera Sans:bold}Most Important Shortcuts$font
 
 ${color2}open new terminal window - ${color}mod+<Enter>
 ${color2}kill focused container - ${color}mod+<Shift>+q
-${color2}open dmenu – ${color}mod+d
+${color2}open dmenu - ${color}mod+d
 ${color2}categorized menu ‘morc_menu’ - ${color}mod+z
 ${color2}tile vertically - ${color}mod+v
-${color2}tile horizontally – ${color}mod+h
+${color2}tile horizontally - ${color}mod+h
 ${color2}toggle split direction - ${color}mod+q
 ${color2}toggle floating - ${color}mod+<Shift>+Space
 ${color2}toggle fullscreen - ${color}mod+f
@@ -38,32 +38,32 @@ ${color2}${font Bitstream Vera Sans:bold}Navigation$font
 ${color2}hange focus - ${color}mod+arrowkeys or mod+j,k,l, ;
 ${color2}change focus between tiling / floating windows - ${color}mod+space
 ${color2}move focused container - mod+<Shift>+arrowkeys or ${color}mod+<Shift>+j,k,l, ;
-${color2}move floating window with the mouse – ${color}hold down mod
+${color2}move floating window with the mouse - ${color}hold down mod
 
 ${color2}switch to workspace number 1-8 - ${color}mod+1-8
 ${color2}navigate between workspaces - ${color}mod+<Ctrl>+<Right>/<Left>
 ${color2}send focused container to workspace number 1-8 - ${color}mod+<Ctrl>+1-8
 ${color2}move to workspace 1-8 with focused container - ${color}mod+<Shift>+1-8
-${color2}workspace back-and-forth – ${color}mod+b
-${color2}move container to workspace back-and-forth – ${color}mod+<Shift>+b
+${color2}workspace back-and-forth - ${color}mod+b
+${color2}move container to workspace back-and-forth - ${color}mod+<Shift>+b
 
 ${color2}resize container - ${color}mod+r followed by arrowkeys or j,k,l, ; (or mod+<right-click>)
-${color2}resize gaps – ${color}mod+<Shift>+g followed by o (outer gaps) / i (inner gaps) and + / - / 0
+${color2}resize gaps - ${color}mod+<Shift>+g followed by o (outer gaps) / i (inner gaps) and + / - / 0
 
-${color2}move focused container to scratchpad – ${color}mod+<Shift>+-
-${color2}show (next) scratchpad window – ${color}mod+-
+${color2}move focused container to scratchpad - ${color}mod+<Shift>+-
+${color2}show (next) scratchpad window - ${color}mod+-
 
 ${color2}${font Bitstream Vera Sans:bold}Change Desktop Behavior$font
 
 ${color2}stacking - ${color}mod+s
 ${color2}tabbed - ${color}mod+w
-${color2}tiling / toggle split – ${color}mod+e
+${color2}tiling / toggle split - ${color}mod+e
 
 ${color2}${font Bitstream Vera Sans:bold}Change Window Borders$font
 
 ${color2}none - ${color}mod+u
 ${color2}2 pixels - ${color}mod+y
-${color2}normal – ${color}mod+n
+${color2}normal - ${color}mod+n
 
 ${color2}${font Bitstream Vera Sans:bold}Misc$font
 
@@ -72,7 +72,7 @@ ${color2}exit i3 - ${color}mod+<Shift>+e
 ${color2}reload the configuration file - ${color}mod+<Shift>+c
 ${color2}restart i3 in-place - ${color}mod+<Shift>+r (preserves and reloads your session)
 ${color2}lock screen - ${color}mod+9
-${color2}hide/show i3status-bar – ${color}mod+m
+${color2}hide/show i3status-bar - ${color}mod+m
 ${color2}toggle sticky - ${color}mod+<Shift>+s
 ]]
 
