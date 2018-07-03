@@ -36,11 +36,11 @@ XTerm*selectToClipboard: true
 Xcursor.theme: xcursor-breeze
 Xcursor.size:                     0
 
-#URxvt.font:                       9x15,xft:TerminessTTFNerdFontMono
+!URxvt.font:                       9x15,xft:TerminessTTFNerdFontMono
 
 ! alternative font settings with 'terminus':
 URxvt.font:      -xos4-terminus-medium-r-normal--20-200-72-72-c-100-iso10646-1
-#URxvt.bold.font: -xos4-terminus-bold-r-normal--16-160-72-72-c-80-iso10646-1
+!#URxvt.bold.font: -xos4-terminus-bold-r-normal--16-160-72-72-c-80-iso10646-1
 !! terminus names see end of file!
 
 URxvt.depth:                      32
@@ -219,7 +219,10 @@ URxvt.keysym.Shift-Control-Down:  \033[1;6B
 ! ------------------------------------------------------------------------------
  rofi.color-enabled: true
  rofi.color-window: argb:ee2b2c2b, #ff6600, #000000
- rofi.color-normal: argb:02b2c2b, #d8dee9, argb:02b2c2b, #ff6600, #eee8d5
- rofi.color-active: argb:0000000, #6699cc, argb:0000000, #6699cc, #fdf6e3
- rofi.color-urgent: argb:0000000, #f99157, argb:0000000, #f99157, #fdf6e3
+ rofi.color-normal: argb:00000000, #d8dee9, argb:00000000, #ff6600, #eee8d5
+ rofi.color-active: argb:00000000, #6699cc, argb:00000000, #6699cc, #fdf6e3
+ rofi.color-urgent: argb:00000000, #f99157, argb:00000000, #f99157, #fdf6e3
 
+! Lalcal
+lalcal*format:	    %a %e %b %l.%M%P
+lalcal*width: 140
