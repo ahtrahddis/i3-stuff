@@ -25,8 +25,7 @@ ${color2}${font Bitstream Vera Sans:bold}Most Important Shortcuts$font
 
 ${color2}open new terminal window - ${color}mod+<Enter>
 ${color2}kill focused container - ${color}mod+<Shift>+q
-${color2}open dmenu - ${color}mod+d
-${color2}categorized menu ‘morc_menu’ - ${color}mod+z
+${color2}open dmenu (rofi) - ${color}mod+d
 ${color2}tile vertically - ${color}mod+v
 ${color2}tile horizontally - ${color}mod+h
 ${color2}toggle split direction - ${color}mod+q
