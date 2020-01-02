@@ -47,12 +47,11 @@ bindsym $mod+Shift+i exec --no-startup-id urxvt -e  ~/.i3/scripts/i3config
 bindsym $mod+F1 exec pcmanfm
 bindsym $mod+F2 exec firefox
 bindsym $mod+F3 exec thunderbird
+bindsym $mod+F11 exec spotify-tray
 bindsym $mod+F12 exec keepassxc
-#bindsym $mod+Shift+F3 exec gksu pcmanfm
-#bindsym $mod+F5 exec terminal -e 'mocp'
-#bindsym $mod+t exec --no-startup-id pkill compton
-#bindsym $mod+Ctrl+t exec --no-startup-id compton -b
-#bindsym $mod+Shift+d --release exec "killall dunst; exec notify-send 'restart dunst'"
+bindsym $mod+t exec --no-startup-id pkill compton
+bindsym $mod+Ctrl+t exec --no-startup-id compton -b
+bindsym $mod+Shift+d --release exec "killall dunst; exec notify-send 'restart dunst'"
 bindsym $mod+Control+Delete --release  exec --no-startup-id i3-scrot
 bindsym $mod+Shift+Delete --release exec --no-startup-id i3-scrot -w
 bindsym $mod+Delete --release exec --no-startup-id i3-scrot -s
@@ -130,13 +129,13 @@ bindsym $mod+Ctrl+Left workspace prev
 # something like: set $ws1 1:mail
 
 set $ws1 1:
-set $ws2 2:
+set $ws2 2:
 set $ws3 3:
-set $ws4 4
+set $ws4 4:
 set $ws5 5
 set $ws6 6
 set $ws7 7
-set $ws8 8:
+set $ws8 8:
 
 # switch to workspace
 bindsym $mod+1 workspace $ws1
@@ -169,33 +168,24 @@ bindsym $mod+Shift+7 move container to workspace $ws7; workspace $ws7
 bindsym $mod+Shift+8 move container to workspace $ws8; workspace $ws8
 
 # Open applications on specific workspaces
-#assign [class="Viber"] $ws8
-
+assign [class="Thunderbird"] $ws3
 
 # Open specific applications in floating mode
 for_window [class="Gthumb"] floating enable
-for_window [class="Electrum"] floating enable
-#for_window [class="Viber"] floating enable move scratchpad
-for_window [class=keepassxc] floating enable
+for_window [class="KeePassXC"] floating enable
 for_window [title="alsamixer"] floating enable border pixel 1
 for_window [title="File Transfer*"] floating enable
-for_window [class="Galculator"] floating enable border pixel 1
 for_window [class="GParted"] floating enable border normal
-for_window [class="Lightdm-gtk-greeter-settings"] floating enable
-for_window [class="Lxappearance"] floating enable sticky enable border normal
+for_window [title="i3_help"] floating enable sticky enable border normal
+for_window [class="Lightdm-settings"] floating enable
 for_window [class="Nitrogen"] floating enable sticky enable border normal
 for_window [class="qt5ct"] floating enable sticky enable border normal
 for_window [class="Qtconfig-qt4"] floating enable sticky enable border normal
 for_window [class="Simple-scan"] floating enable border normal
 for_window [class="(?i)System-config-printer.py"] floating enable border normal
 for_window [class="Skype"] floating enable border normal
+for_window [class="Timeset-gui"] floating enable border normal
 for_window [class="(?i)virtualbox"] floating enable border normal
-for_window [window_role="pop-up"] floating enable
-for_window [window_role="bubble"] floating enable
-for_window [window_role="task_dialog"] floating enable
-for_window [window_role="Preferences"] floating enable
-for_window [window_type="dialog"] floating enable
-for_window [window_type="menu"] floating enable
 
 # switch to workspace with urgent window automatically
 for_window [urgent=latest] focus
@@ -209,6 +199,22 @@ bindsym $mod+Shift+r restart
 # exit i3 (logs you out of your X session)
 bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
 
+# Set shut down, restart and locking features
+bindsym $mod+0 mode "$mode_system"
+set $mode_system System (l) lock, (e) logout, (s) suspend, (h) hibernate, (r) reboot, (Shift+s) shutdown
+
+mode "$mode_system" {
+    bindsym l exec --no-startup-id ~/.i3/scripts/i3exit.sh lock, mode "default"
+    bindsym e exec --no-startup-id ~/.i3/scripts/i3exit.sh logout, mode "default"
+    bindsym s exec --no-startup-id ~/.i3/scripts/i3exit.sh suspend, mode "default"
+    bindsym h exec --no-startup-id ~/.i3/scripts/i3exit.sh hibernate, mode "default"
+    bindsym r exec --no-startup-id ~/.i3/scripts/i3exit.sh reboot, mode "default"
+    bindsym Shift+s exec --no-startup-id ~/.i3/scripts/i3exit.sh shutdown, mode "default"
+
+    # back to normal: Enter or Escape
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+}
 
 # Resize window (you can also use the mouse for that)
 bindsym $mod+r mode "resize"
@@ -239,20 +245,21 @@ bindsym $mod+9 exec --no-startup-id i3lock -d -c 000000
 
 # Autostart applications
 exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
-exec --no-startup-id nitrogen --restore; sleep 1; compton --config ~/.i3/compton.conf -b
+exec --no-startup-id nitrogen --restore; sleep 1; 
+exec --no-startup-id compton --config ~/.i3/compton.conf -b
 exec --no-startup-id nm-applet
 exec --no-startup-id clipit
 exec --no-startup-id volumeicon
-#exec --no-startup-id shutter --min_at_startup
 exec --no-startup-id setxkbmap -layout us,el && setxkbmap -option 'grp:alt_shift_toggle'
 exec --no-startup-id numlockx
 exec_always --no-startup-id sbxkb
 exec --no-startup-id ~/.i3/conky/runconky.sh
-exec --no-startup-id xautolock -time 10 -locker blurlock
 exec --no-startup-id ~/ICC/profile_apply
 exec --no-startup-id  ~/scripts/nextcl
-#exec --no-startup-id nextcloud
-exec --no-startup-id qtodotxt
+exec --no-startup-id sleep 10 && qtodotxt
+exec --no-startup-id QOwnNotes
+exec --no-startup-id xset s off -dpms && xset s 3600 3600 
+#exec --no-startup-id g810-led -a FFFFFF
 
 # Color palette used for i3 
 # Variables are set based on the documentation:
@@ -305,6 +312,7 @@ colors {
 
 }
 
+
 # hide/unhide i3status bar
 bindsym $mod+m bar mode toggle
 
@@ -318,24 +326,6 @@ client.focused          $i3_color1  $i3_color1  $i3_text $i3_color12
 #client.placeholder      $i3_color15 $i3_color17 $i3_color16 $i3_color15 $i3_color17
 #client.background       $i3_background
 
-# i3exit setup
-
-bindsym $mod+0 mode "$mode_system"
-
-set $mode_system System (l) lock, (e) logout, (s) suspend, (h) hibernate, (r) reboot, (Shift+s) shutdown
-
-mode "$mode_system" {
-    bindsym l exec --no-startup-id ~/.i3/scripts/i3exit.sh lock, mode "default"
-    bindsym e exec --no-startup-id ~/.i3/scripts/i3exit.sh logout, mode "default"
-    bindsym s exec --no-startup-id ~/.i3/scripts/i3exit.sh suspend, mode "default"
-    bindsym h exec --no-startup-id ~/.i3/scripts/i3exit.sh hibernate, mode "default"
-    bindsym r exec --no-startup-id ~/.i3/scripts/i3exit.sh reboot, mode "default"
-    bindsym Shift+s exec --no-startup-id ~/.i3/scripts/i3exit.sh shutdown, mode "default"
-
-    # back to normal: Enter or Escape
-    bindsym Return mode "default"
-    bindsym Escape mode "default"
-}
 
 
 #############################
@@ -343,7 +333,7 @@ mode "$mode_system" {
 #############################
 
 # Set inner/outer gaps
-gaps inner 10
+gaps inner 8
 gaps outer -4
 
 # Additionally, you can issue commands with the following syntax. This is useful to bind keys to changing the gap size.

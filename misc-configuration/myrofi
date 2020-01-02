@@ -1,6 +1,0 @@
-rofi -combi-modi window,drun -show combi -modi combi -lines 8
-#rofi -show run -modi run -location 1 -width 100 \
-#		 -lines 1 -line-margin 0 -line-padding 1 \
-#		 -separator-style none -font "Noto 10.5" -columns 9 -bw 0 \
-#		 -disable-history \
-#		 -hide-scrollbar \
